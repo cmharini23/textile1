@@ -15,9 +15,9 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
-import './MenCheckoutPage.css';
+import './WomenCheckoutPage.css';
 
-const MenCheckoutPage = () => {
+const WomenCheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
@@ -27,7 +27,7 @@ const MenCheckoutPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('menCart')) || [];
+    const savedCart = JSON.parse(localStorage.getItem('womenCart')) || [];
     setCartItems(savedCart);
   }, []);
 
@@ -35,14 +35,14 @@ const MenCheckoutPage = () => {
     // Retrieve existing items from wholeCart if any
     const existingWholeCart = JSON.parse(localStorage.getItem('wholeCart')) || [];
     
-    // Combine with items from menCart
+    // Combine with items from womenCart
     const updatedWholeCart = [...existingWholeCart, ...cartItems];
 
     // Save updated items to WholeCart
     localStorage.setItem('wholeCart', JSON.stringify(updatedWholeCart));
 
-    // Clear the menCart
-    localStorage.removeItem('menCart');
+    // Clear the womenCart
+    localStorage.removeItem('womenCart');
 
     setOrderPlaced(true);
     setOpenDialog(true);
@@ -50,7 +50,7 @@ const MenCheckoutPage = () => {
 
   const handleDialogClose = () => {
     setOpenDialog(false);
-    navigate('/men');
+    navigate('/women');
   };
 
   const handleGoToCart = () => {
@@ -58,20 +58,15 @@ const MenCheckoutPage = () => {
     navigate('/whole');
   };
 
-  const handleWrongButtonClick = () => {
-    setOpenDialog(false);
-    navigate('/whole'); // Redirects to WholeCartPage
-  };
-
   return (
-    <Box className="men-checkout-outer-container">
-      <Box className="men-checkout-container">
-        <Typography variant="h4" className="men-checkout-title" gutterBottom>
+    <Box className="women-checkout-outer-container">
+      <Box className="women-checkout-container">
+        <Typography variant="h4" className="women-checkout-title" gutterBottom>
           Checkout
         </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Box className="men-shipping-info">
+            <Box className="women-shipping-info">
               <Typography variant="h6" gutterBottom>
                 Shipping Information
               </Typography>
@@ -102,12 +97,12 @@ const MenCheckoutPage = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box className="men-cart-summary">
+            <Box className="women-cart-summary">
               <Typography variant="h6" gutterBottom>
                 Cart Summary
               </Typography>
               {cartItems.map((item) => (
-                <Card className="men-summary-card" key={item.id}>
+                <Card className="women-summary-card" key={item.id}>
                   <CardContent>
                     <Typography variant="h6">{item.name}</Typography>
                     <Typography variant="body2" color="textSecondary">
@@ -122,7 +117,7 @@ const MenCheckoutPage = () => {
         <Button
           variant="contained"
           color="primary"
-          className="men-place-order-button"
+          className="women-place-order-button"
           onClick={handlePlaceOrder}
           disabled={!name || !address || !paymentMethod}
         >
@@ -136,7 +131,10 @@ const MenCheckoutPage = () => {
             <IconButton
               edge="end"
               color="inherit"
-              onClick={handleDialogClose}
+              onClick={() => {
+                setOrderPlaced(false); // Reset orderPlaced flag
+                handleDialogClose(); // Navigate to women page
+              }}
               aria-label="close"
               className="close-button"
             >
@@ -158,4 +156,4 @@ const MenCheckoutPage = () => {
   );
 };
 
-export default MenCheckoutPage;
+export default WomenCheckoutPage;

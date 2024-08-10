@@ -1,59 +1,103 @@
-.kids-checkout-container {
-    padding: 20px;
-    background: linear-gradient(to right, #e3f2fd, #bbdefb);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s, box-shadow 0.3s;
+/* Container styling */
+.kids-checkout-outer-container {
+  padding: 20px;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin: 40px auto;
+  animation: fadeIn 1s ease-in-out, slideIn 1s ease-in-out;
+}
+
+/* Fade-in effect for the container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  
-  .kids-checkout-title {
-    text-align: center;
-    color: #212121;
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease-in-out;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .kids-shipping-info, .kids-cart-summary {
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+}
+
+/* Slide-in effect for the container */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
   }
-  
-  .kids-summary-card {
-    margin-bottom: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .kids-summary-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .kids-place-order-button {
-    display: block;
-    width: 100%;
-    background: #007bff;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .kids-place-order-button:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
+
+/* Title styling */
+.kids-checkout-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #212121;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Shipping info styling */
+.kids-shipping-info {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Cart summary styling */
+.kids-cart-summary {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Summary card styling */
+.kids-summary-card {
+  margin-bottom: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kids-summary-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Place order button styling */
+.kids-place-order-button {
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.kids-place-order-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Dialog styling */
+.MuiDialog-paper {
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

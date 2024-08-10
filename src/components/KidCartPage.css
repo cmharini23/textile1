@@ -1,70 +1,88 @@
+/* Container styling */
 .kids-cart-container {
-    padding: 20px;
-    background: linear-gradient(to right, #f8f9fa, #e9ecef);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s, box-shadow 0.3s;
+  padding: 20px;
+  background: linear-gradient(to right, #f5f5f5, #e3f2fd);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin: 40px auto;
+  animation: fadeIn 1s ease-in-out, slideIn 1s ease-in-out;
+}
+
+/* Fade-in effect for the container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  
-  .kids-cart-title {
-    text-align: center;
-    color: #343a40;
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease-in-out;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .kids-empty-cart-message {
-    text-align: center;
-    color: #868e96;
-    font-size: 18px;
+}
+
+/* Slide-in effect for the container */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
   }
-  
-  .kids-cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s, transform 0.3s;
-    border-radius: 4px;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .kids-cart-item:hover {
-    background-color: #e9ecef;
-    transform: scale(1.02);
-  }
-  
-  .kids-cart-item-icon {
-    color: #007bff;
-    margin-left: 10px;
-  }
-  
-  .kids-cart-divider {
-    margin: 10px 0;
-  }
-  
-  .kids-checkout-button {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    background: #007bff;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .kids-checkout-button:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
+
+/* Title styling */
+.kids-cart-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #212121;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Cart item styling */
+.kids-cart-item {
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kids-cart-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Empty cart message styling */
+.kids-empty-cart-message {
+  font-size: 1.5rem;
+  color: #666;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Checkout button styling */
+.kids-checkout-button {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.kids-checkout-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}

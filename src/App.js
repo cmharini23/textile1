@@ -15,8 +15,8 @@ import ContactPage from './components/ContactPage';
 import AdminLogin from './components/AdminLogin';
 import Sign from './components/Sign';
 import AdminDashboard from './components/admin/AdminDashboard';
-import CartPage from './components/CartPage';
-import CheckoutPage from './components/CheckoutPage';
+import WomenCartPage from './components/WomenCartPage';
+import WomenCheckoutPage from './components/WomenCheckoutPage';
 import MenCartPage from './components/MenCartPage';
 import MenCheckoutPage from './components/MenCheckoutPage';
 import KidCartPage from './components/KidCartPage';
@@ -41,8 +41,8 @@ function App() {
           <Route path="/men" element={<MenProductList />} />
           <Route path="/kids" element={<KidProductList />} />
           <Route path="/admin/*" element={<AdminDashboard />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/women-cart" element={<WomenCartPage />} />
+          <Route path="/women-checkout" element={<WomenCheckoutPage />} />
           <Route path="/men-cart" element={<MenCartPage />} />
           <Route path="/men-checkout" element={<MenCheckoutPage />} />
           <Route path="/kid-cart" element={<KidCartPage />} />

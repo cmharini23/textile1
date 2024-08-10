@@ -21,7 +21,7 @@ const KidProductList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -42,7 +42,6 @@ const KidProductList = () => {
   };
 
   const handleBuyNow = (productId) => {
-    // Add to cart and navigate to KidCartPage
     const cart = JSON.parse(localStorage.getItem('kidCart')) || [];
     const product = kidProducts.find((p) => p.id === productId);
     if (product) {

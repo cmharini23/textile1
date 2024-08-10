@@ -9,97 +9,76 @@ import {
   Divider,
   IconButton,
   TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
 } from '@mui/material';
-import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import './WholeCart.css';
 
 const WholeCart = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [editItem, setEditItem] = useState(null);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [formValues, setFormValues] = useState({ productName: '', price: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCartItems = async () => {
-      try {
-        const response = await fetch('/cart');
-        const data = await response.json();
-        setCartItems(data);
-      } catch (error) {
-        console.error('Error fetching cart items:', error);
-      }
+      const savedCart = JSON.parse(localStorage.getItem('wholeCart')) || [];
+      setCartItems(savedCart);
     };
 
     fetchCartItems();
   }, []);
 
-  const handleCheckout = () => {
-    navigate('/checkout');
-  };
-
-  const handleDelete = async (itemToDelete) => {
+  const handleCheckout = async () => {
     try {
-      await fetch(`/cart/${itemToDelete.id}`, {
-        method: 'DELETE',
+      const orderData = { items: cartItems }; // Adjust this based on your backend schema
+      await fetch('http://localhost:8080/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData),
       });
-      setCartItems(cartItems.filter(item => item.id !== itemToDelete.id));
+      // Redirect to the WholeCart page after placing the order
+      navigate('/wholecart');
     } catch (error) {
-      console.error('Error deleting cart item:', error);
+      console.error('Error placing order:', error);
     }
   };
 
-  const handleEditClick = (item) => {
-    setEditItem(item);
-    setFormValues({ productName: item.productName, price: item.price });
-    setOpenDialog(true);
+  const handleDelete = (itemId) => {
+    const updatedCart = cartItems.filter(item => item.id !== itemId);
+    setCartItems(updatedCart);
+    localStorage.setItem('wholeCart', JSON.stringify(updatedCart));
   };
 
-  const handleDialogClose = () => {
-    setOpenDialog(false);
-    setEditItem(null);
+  const handleQuantityChange = (itemId, newQuantity) => {
+    if (newQuantity < 1) return; // Prevent setting quantity less than 1
+
+    const updatedCart = cartItems.map(item => {
+      if (item.id === itemId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setCartItems(updatedCart);
+    localStorage.setItem('wholeCart', JSON.stringify(updatedCart));
   };
 
-  const handleFormChange = (event) => {
-    const { name, value } = event.target;
-    setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
+  const handleQuantityIncrement = (itemId) => {
+    const item = cartItems.find(item => item.id === itemId);
+    handleQuantityChange(itemId, (item.quantity || 1) + 1);
   };
 
-  const handleFormSubmit = async () => {
-    try {
-      const updatedItem = {
-        ...editItem,
-        productName: formValues.productName,
-        price: formValues.price,
-      };
-
-      await fetch(`/cart/${editItem.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedItem),
-      });
-
-      setCartItems(cartItems.map(item =>
-        item.id === editItem.id ? updatedItem : item
-      ));
-      handleDialogClose();
-    } catch (error) {
-      console.error('Error updating cart item:', error);
-    }
+  const handleQuantityDecrement = (itemId) => {
+    const item = cartItems.find(item => item.id === itemId);
+    handleQuantityChange(itemId, (item.quantity || 1) - 1);
   };
 
   return (
     <Box className="whole-cart-container">
       <Typography variant="h4" className="whole-cart-title" gutterBottom>
-        Admin Cart
+        Your Cart
       </Typography>
+
       {cartItems.length === 0 ? (
         <Typography className="empty-cart-message">
           No items in the cart.
@@ -109,14 +88,41 @@ const WholeCart = () => {
           {cartItems.map((item) => (
             <React.Fragment key={item.id}>
               <ListItem className="cart-item">
+                <img src={item.image} alt={item.name} className="cart-item-image" />
                 <ListItemText
-                  primary={`ID: ${item.id} - ${item.productName}`}
-                  secondary={`Price: $${item.price}`}
+                  primary={`ID: ${item.id} - ${item.name}`}
+                  secondary={`Price: $${item.price} | Quantity: ${item.quantity || 1}`}
                 />
-                <IconButton onClick={() => handleEditClick(item)} className="cart-item-icon">
-                  <EditIcon />
-                </IconButton>
-                <IconButton onClick={() => handleDelete(item)} className="cart-item-icon">
+                <Box className="quantity-controls">
+                  <IconButton
+                    onClick={() => handleQuantityDecrement(item.id)}
+                    className="quantity-button"
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                  <TextField
+                    value={item.quantity || 1}
+                    className="quantity-input"
+                    inputProps={{ style: { textAlign: 'center' } }}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value);
+                      if (value >= 1) {
+                        handleQuantityChange(item.id, value);
+                      }
+                    }}
+                    type="number"
+                  />
+                  <IconButton
+                    onClick={() => handleQuantityIncrement(item.id)}
+                    className="quantity-button"
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Box>
+                <IconButton
+                  onClick={() => handleDelete(item.id)}
+                  className="delete-button"
+                >
                   <DeleteIcon />
                 </IconButton>
               </ListItem>
@@ -125,6 +131,7 @@ const WholeCart = () => {
           ))}
         </List>
       )}
+
       <Button
         variant="contained"
         color="primary"
@@ -132,35 +139,8 @@ const WholeCart = () => {
         onClick={handleCheckout}
         disabled={cartItems.length === 0}
       >
-        Checkout
+        Place Order
       </Button>
-      
-      <Dialog open={openDialog} onClose={handleDialogClose}>
-        <DialogTitle>Edit Item</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Name"
-            name="productName"
-            value={formValues.productName}
-            onChange={handleFormChange}
-            fullWidth
-          />
-          <TextField
-            margin="dense"
-            label="Price"
-            name="price"
-            value={formValues.price}
-            onChange={handleFormChange}
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button onClick={handleFormSubmit}>Save</Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };

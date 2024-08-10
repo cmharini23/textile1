@@ -1,41 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+} from '@mui/material';
+import './Cart.css';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const fetchCartItems = async () => {
-      const response = await fetch('/api/cart');
-      const data = await response.json();
-      setCartItems(data);
-    };
-
-    fetchCartItems();
+    fetch('http://localhost:8080/cart')
+      .then(response => response.json())
+      .then(data => setCartItems(data))
+      .catch(error => console.error('Error fetching items data:', error));
   }, []);
 
   return (
-    <div className="carts">
-      <h1>Carts</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Product</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map(item => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.customer}</td>
-            
-            </tr>
+    <Box className="admin-cart-container">
+      <Typography variant="h4" className="admin-cart-title" gutterBottom>
+        Admin Cart Page
+      </Typography>
+
+      {cartItems.length === 0 ? (
+        <Typography className="empty-cart-message">
+          No items in the cart.
+        </Typography>
+      ) : (
+        <List>
+          {cartItems.map((item) => (
+            <React.Fragment key={item.id}>
+              <ListItem className="cart-item">
+                <img src={item.image} alt={item.name} className="cart-item-image" />
+                <ListItemText
+                  primary={`ID: ${item.id} - ${item.name}`}
+                  secondary={`Price: $${item.price} | Quantity: ${item.quantity || 1}`}
+                />
+              </ListItem>
+              <Divider className="cart-divider" />
+            </React.Fragment>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </List>
+      )}
+    </Box>
   );
 };
 

@@ -1,19 +1,115 @@
-/* AdminDashboard.css or Cart.css */
-.cart-container {
+/* AdminCartPage.css */
+
+.admin-cart-container {
   padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.admin-cart-container:hover {
+  transform: scale(1.02);
 }
 
-th, td {
+.admin-cart-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #3f51b5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.admin-cart-title:hover {
+  color: #e0337a;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.empty-cart-message {
+  text-align: center;
+  color: gray;
+  font-size: 1.2rem;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
   padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-th {
-  background-color: #f4f4f4;
+.cart-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.cart-item-image:hover {
+  transform: scale(1.1);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Align quantity controls to the right */
+}
+
+.quantity-button {
+  transition: background-color 0.3s ease;
+}
+
+.quantity-button:hover {
+  background-color: #e0337a;
+}
+
+.quantity-input {
+  width: 60px;
+  margin: 0 10px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+  border-color: #3f51b5;
+}
+
+.cart-divider {
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease;
+}
+
+.cart-divider:hover {
+  border-color: #3f51b5;
+}
+
+.delete-button {
+  margin-left: 20px;
+  color: #e0337a;
+  transition: color 0.3s ease;
+}
+
+.delete-button:hover {
+  color: #c62828;
 }

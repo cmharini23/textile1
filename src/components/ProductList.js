@@ -13,15 +13,15 @@ import {
   Button,
 } from '@mui/material';
 import { BiSearchAlt } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Products from './Products'; // Import your products data
+import { useNavigate } from 'react-router-dom';
+import Products from './Products';
 import './ProductList.css';
 
 const ProductList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -43,18 +43,17 @@ const ProductList = () => {
 
   const handleBuyNow = (product) => {
     // Get the current cart items from local storage
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem('womenCart')) || [];
     
     // Add the selected product to the cart
     cart.push(product);
     
     // Save the updated cart to local storage
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('womenCart', JSON.stringify(cart));
     
-    // Navigate to the CartPage
-    navigate('/cart');
+    // Navigate to the WomenCartPage
+    navigate('/women-cart');
   };
-  
 
   const filteredProducts = Products.filter((product) => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -112,7 +111,7 @@ const ProductList = () => {
         </Box>
       </Box>
       <Box className="content">
-        <Grid container spacing={2}>
+        <Grid container spacing={2} alignItems="stretch">
           {filteredProducts.map((product) => (
             <Grid item xs={12} sm={6} md={4} key={product.id}>
               <Card className="product-card">
@@ -134,14 +133,13 @@ const ProductList = () => {
                     {product.price}
                   </Typography>
                   <Button
-  variant="contained"
-  color="primary"
-  className="buy-now-button"
-  onClick={() => handleBuyNow(product)} // Pass the product object
->
-  Buy Now
-</Button>
-
+                    variant="contained"
+                    color="primary"
+                    className="buy-now-button"
+                    onClick={() => handleBuyNow(product)}
+                  >
+                    Buy Now
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>

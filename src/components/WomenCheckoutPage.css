@@ -1,0 +1,79 @@
+/* Styles for WomenCheckoutPage */
+.women-checkout-outer-container {
+  padding: 20px;
+  background: linear-gradient(to right, #f9f9f9, #e0e0e0);
+  min-height: 100vh;
+  transition: background 0.5s ease;
+}
+
+.women-checkout-container {
+  max-width: 1200px;
+  margin: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.women-checkout-container:hover {
+  transform: scale(1.02);
+}
+
+.women-checkout-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.women-shipping-info {
+  margin-bottom: 20px;
+}
+
+.women-cart-summary {
+  margin-top: 20px;
+}
+
+.women-summary-card {
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.women-summary-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.women-place-order-button {
+  margin-top: 20px;
+  background: #ff4081;
+  color: #fff;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.women-place-order-button:hover {
+  background: #e0337a;
+  transform: scale(1.05);
+}
+
+/* Styles for Success Dialog */
+.success-dialog .MuiDialog-paper {
+  animation: scaleUp 0.5s ease-out;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

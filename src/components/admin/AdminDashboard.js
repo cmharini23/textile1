@@ -25,7 +25,7 @@ const AdminDashboard = () => {
           <Route path="orders" element={<Orders />} />
           <Route path="customer-details" element={<CustomerDetailsForm />} /> {/* Correct route */}
           <Route path="products" element={<Products />} />
-          <Route path="cartsss" element={<Cart />} />
+          <Route path="cartss" element={<Cart />} />
           <Route path="profile" element={<Profile />} />
           <Route path="logout" element={<Navigate to="/sign" />} />
           <Route path="notification" element={<div>Notification Page</div>} />

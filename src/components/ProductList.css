@@ -1,102 +1,360 @@
+/* Set the background color for the main container or body */
+body {
+  background-color: #f0f0f0; /* Ash-colored background */
+  animation: bodyBackground 10s infinite alternate; /* Add a background animation */
+}
+
+/* Body Background Animation */
+@keyframes bodyBackground {
+  0% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}
+
 .product-list {
   display: flex;
   flex-wrap: wrap; /* Ensure cards wrap to the next line if they exceed the container width */
-  gap: 20px; /* Space between cards */
+  gap: 20px 30px; /* Increase vertical and horizontal space between cards */
   justify-content: center; /* Center cards horizontally */
+  padding: 20px; /* Add padding to container */
+  animation: fadeIn 2s ease-in; /* Add fade-in animation for the whole list */
 }
 
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Sidebar Styling */
 .sidebar {
   width: 250px;
   padding: 20px;
   border-right: 1px solid #ddd;
-  background-color: whitesmoke;
+  background-color: #007bff; /* Vibrant background color */
+  color: #fff; /* White text for contrast */
+  position: relative; /* For positioning pseudo-elements */
+  overflow: hidden; /* Hide overflow for cleaner look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  animation: slideIn 1s ease-out; /* Add slide-in animation */
 }
 
-.search-filter-container {
-  margin-bottom: 20px;
-  color: brown;
+/* Sidebar Slide-In Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
-.search-input {
-  width: 100%;
+/* Sidebar Hover Effect */
+.sidebar:hover {
+  transform: translateX(10px); /* Slightly shift the sidebar on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
-.filter-container {
-  margin-top: 20px;
-}
-
-.product-card {
-  position: relative; /* Ensure the ::before pseudo-element is positioned correctly */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 10px;
-  border-radius: 10px; /* Rounded corners for the card */
-  background-color: #fff; /* Card background color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
-  margin: 10px; /* Space around each card */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.product-card img {
-  object-fit: cover;
-  height: 200px; /* Fixed height for images */
-  width: 100%;
-}
-
-.product-card .card-content {
-  padding: 15px;
-  text-align: center;
- 
-}
-
-.product-card .card-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.product-card .card-price {
-  color: green;
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-.product-card .buy-now-button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.product-card .buy-now-button:hover {
-  background-color: #0056b3;
-}
-
-/* Cinematic Effect */
-.product-card::before {
-  background: rgba(255, 255, 255, 0.7);
+/* Sidebar Animated Background */
+.sidebar::before {
   content: '';
-  height: 100%;
-  left: -100%;
   position: absolute;
   top: 0;
-  transform: skewX(-15deg);
-  transition: left 0.5s ease-in-out;
+  left: -100%;
   width: 100%;
-  z-index: 1;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+  transform: rotate(-30deg);
+  transition: left 0.8s ease-in-out; /* Smooth animation for background */
+  z-index: 0; /* Place it behind the content */
 }
 
+/* Hover Effect for Background */
+.sidebar:hover::before {
+  left: 100%;
+}
+
+/* Ensure content stays on top of the animated background */
+.sidebar > * {
+  position: relative;
+  z-index: 1; /* Content on top of the background */
+}
+
+/* Sidebar Heading */
+.sidebar h2 {
+  font-size: 24px; /* Larger font size for the heading */
+  margin-bottom: 20px; /* Space below heading */
+  color: #ffd700; /* Bright color for the heading */
+  text-align: center; /* Center-align text */
+  animation: fadeInUp 1s ease-out; /* Fade-in up animation */
+}
+
+/* Fade-In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sidebar Links */
+.sidebar a {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 8px; /* Rounded corners for links */
+  color: #fff; /* White text */
+  text-decoration: none; /* Remove underline */
+  margin-bottom: 10px; /* Space between links */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  font-size: 18px; /* Font size for links */
+  animation: fadeInUp 1s ease-out; /* Fade-in up animation */
+}
+
+/* Sidebar Link Hover Effect */
+.sidebar a:hover {
+  background-color: #0056b3; /* Darker background on hover */
+  transform: scale(1.05); /* Slightly larger link on hover */
+}
+
+/* Sidebar Button */
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffd700; /* Bright button color */
+  color: #007bff; /* Dark text for contrast */
+  font-size: 18px; /* Button font size */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  animation: bounceIn 1s ease-out; /* Bounce-in animation */
+}
+
+/* Bounce-In Animation */
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Button Hover Effect */
+.sidebar button:hover {
+  background-color: #ffc107; /* Slightly darker button color on hover */
+  transform: scale(1.05); /* Slightly larger button on hover */
+}
+
+/* Search Filter Container */
+.search-filter-container {
+  margin-bottom: 20px;
+  position: relative; /* To position the animated effects */
+  color: brown;
+  animation: fadeIn 2s ease-in; /* Fade-in animation */
+}
+
+/* Search Input Styling */
+.search-input {
+  width: 100%;
+  padding: 10px 20px; /* Adjust padding for a better look */
+  border: 2px solid #007bff; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff; /* Background color */
+  font-size: 16px; /* Font size */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  outline: none; /* Remove default outline */
+  animation: pulse 3s infinite; /* Pulse animation */
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+/* Search Input Focus Effect */
+.search-input:focus {
+  border-color: #0056b3; /* Darker border color on focus */
+  box-shadow: 0 0 8px rgba(0, 91, 255, 0.3); /* Glowing effect */
+}
+
+/* Search Icon Animation */
+.search-filter-container::after {
+  content: '\f002'; /* FontAwesome search icon */
+  font-family: 'FontAwesome'; /* Ensure FontAwesome is loaded */
+  position: absolute;
+  top: 50%;
+  right: 20px; /* Space from the right edge */
+  transform: translateY(-50%); /* Center vertically */
+  font-size: 20px; /* Icon size */
+  color: #007bff; /* Icon color */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Search Icon Hover Effect */
+.search-input:focus + .search-filter-container::after {
+  color: #0056b3; /* Darker color on focus */
+  transform: translateY(-50%) scale(1.2); /* Slightly larger icon on focus */
+}
+
+/* Filter Container */
+.filter-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px; /* Slightly rounded corners */
+  background-color: #fff; /* Background color for the filter container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for effects */
+  position: relative; /* Relative positioning for pseudo-elements */
+  overflow: hidden; /* Hide overflow for clean edges */
+  animation: fadeInUp 1s ease-out; /* Fade-in up animation */
+}
+
+/* Filter Container Hover Effect */
+.filter-container:hover {
+  transform: scale(1.03); /* Slightly scale up on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deep shadow on hover */
+}
+
+/* Animated Background Effect */
+.filter-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 70%);
+  transform: rotate(-30deg);
+  transition: left 0.8s ease-in-out; /* Smooth transition for background */
+  z-index: 0; /* Behind the content */
+}
+
+/* Hover Effect for Background */
+.filter-container:hover::before {
+  left: 100%;
+}
+
+/* Ensure content stays on top of the animated background */
+.filter-container > * {
+  position: relative;
+  z-index: 1; /* Content on top of the background */
+}
+
+/* Product Card Styling */
+.product-card {
+  width: 300px;
+  background-color: #fff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  overflow: hidden; /* Hide overflow for clean edges */
+  position: relative; /* For positioning pseudo-elements */
+  animation: fadeIn 1.5s ease-in; /* Fade-in animation */
+}
+
+/* Product Card Hover Effect */
+.product-card:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deep shadow on hover */
+}
+
+/* Product Card Animated Background */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+  transform: rotate(-30deg);
+  transition: left 0.8s ease-in-out; /* Smooth transition for background */
+  z-index: 0; /* Behind the content */
+}
+
+/* Hover Effect for Background */
 .product-card:hover::before {
   left: 100%;
 }
 
-/* Hover Effect */
-.product-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
+/* Ensure content stays on top of the animated background */
+.product-card > * {
+  position: relative;
+  z-index: 1; /* Content on top of the background */
+}
+
+/* Product Image Styling */
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Cover the card area */
+  transition: transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Product Image Hover Effect */
+.product-card:hover img {
+  transform: scale(1.1); /* Slightly zoom in on hover */
+}
+
+/* Product Info Styling */
+.product-info {
+  padding: 15px;
+  text-align: center;
+}
+
+/* Product Title Styling */
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333; /* Darker color for text */
+}
+
+/* Product Price Styling */
+.product-price {
+  font-size: 16px;
+  color: #007bff; /* Vibrant color for price */
+  margin-bottom: 10px;
+}
+
+/* 'Buy Now' Button Styling */
+.product-button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Vibrant button color */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  animation: bounceIn 1s ease-out; /* Bounce-in animation */
+}
+
+/* 'Buy Now' Button Hover Effect */
+.product-button:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
 }
