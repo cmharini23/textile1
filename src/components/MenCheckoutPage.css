@@ -1,0 +1,83 @@
+/* Container styling */
+.men-checkout-container {
+    padding: 20px;
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Fade-in effect for the container */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Title styling */
+  .men-checkout-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #212121;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Form styling */
+  .men-checkout-form {
+    margin-top: 20px;
+  }
+  
+  /* Input styling */
+  .men-checkout-input {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .men-checkout-input:focus {
+    border-color: #007bff;
+  }
+  
+  /* Button styling */
+  .men-place-order-button {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .men-place-order-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Divider styling */
+  .men-checkout-divider {
+    margin: 20px 0;
+    background-color: #ddd;
+  }
+  
+  /* Thank you message styling */
+  .men-thank-you-message {
+    font-size: 1.25rem;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

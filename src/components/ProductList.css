@@ -1,0 +1,102 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap; /* Ensure cards wrap to the next line if they exceed the container width */
+  gap: 20px; /* Space between cards */
+  justify-content: center; /* Center cards horizontally */
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  background-color: whitesmoke;
+}
+
+.search-filter-container {
+  margin-bottom: 20px;
+  color: brown;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.filter-container {
+  margin-top: 20px;
+}
+
+.product-card {
+  position: relative; /* Ensure the ::before pseudo-element is positioned correctly */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  border-radius: 10px; /* Rounded corners for the card */
+  background-color: #fff; /* Card background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+  margin: 10px; /* Space around each card */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card img {
+  object-fit: cover;
+  height: 200px; /* Fixed height for images */
+  width: 100%;
+}
+
+.product-card .card-content {
+  padding: 15px;
+  text-align: center;
+ 
+}
+
+.product-card .card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.product-card .card-price {
+  color: green;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.product-card .buy-now-button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.product-card .buy-now-button:hover {
+  background-color: #0056b3;
+}
+
+/* Cinematic Effect */
+.product-card::before {
+  background: rgba(255, 255, 255, 0.7);
+  content: '';
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  transform: skewX(-15deg);
+  transition: left 0.5s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.product-card:hover::before {
+  left: 100%;
+}
+
+/* Hover Effect */
+.product-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}

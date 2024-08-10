@@ -1,0 +1,37 @@
+.product-list {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.search-filter-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.filter-container {
+  margin-top: 20px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.product-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buy-now-button {
+  margin-top: 10px;
+}

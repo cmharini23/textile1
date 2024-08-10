@@ -1,0 +1,32 @@
+.side-nav {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixes the position */
+    top: 0;
+    left: 0; /* Positions the SideNav on the left */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    padding-top: 20px;
+  }
+  
+  .side-nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .side-nav ul li {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .side-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .side-nav ul li a:hover {
+    background-color: #575757;
+    
+  }

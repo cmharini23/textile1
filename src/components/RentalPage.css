@@ -1,0 +1,33 @@
+.rental-page {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 300px;
+    padding: 16px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .search-filter-container {
+    margin-bottom: 16px;
+  }
+  
+  .search-input {
+    margin-bottom: 16px;
+  }
+  
+  .filter-container {
+    margin-bottom: 16px;
+  }
+  
+  .product-card {
+    position: relative;
+    padding: 16px;
+  }
+  
+  .rent-now-button {
+    margin-top: 16px;
+    display: block;
+    width: 100%;
+  }
+  

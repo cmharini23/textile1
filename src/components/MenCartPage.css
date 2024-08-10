@@ -1,0 +1,93 @@
+/* Container styling */
+.men-cart-container {
+    padding: 20px;
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Fade-in effect for the container */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Title styling */
+  .men-cart-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #212121;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Button styling */
+  .men-checkout-button {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .men-checkout-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* List item styling */
+  .men-cart-item {
+    background: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .men-cart-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Divider styling */
+  .men-cart-divider {
+    margin: 12px 0;
+    background-color: #ddd;
+  }
+  
+  /* Empty cart message styling */
+  .men-empty-cart-message {
+    font-size: 1.25rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* Icon button styling */
+  .men-cart-item-icon {
+    margin-left: 8px;
+  }
+  
+  /* Dialog styling */
+  .MuiDialog-paper {
+    width: 400px;
+  }
+  

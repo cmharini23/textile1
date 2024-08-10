@@ -1,0 +1,255 @@
+/* HomePage.css */
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+background-color:brown
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-weight: bolder;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.app-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.main-nav a {
+  margin-left: 100px;
+  text-decoration: none;
+  color:black ;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  font-family: 'emerland serif';
+}
+
+.main-nav a svg {
+  margin-right: 5px;
+}
+
+.category-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  background-color: silver;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-nav a {
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'emerland serif';
+}
+
+.carousel-section {
+  display: flex;
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  overflow: hidden; /* Prevent scrolling */
+  margin-top: 80px; /* Add margin-top to push carousel down */
+}
+
+.carousel-item {
+  flex: 1 0 25%; /* Make items flexible and occupy a quarter of the section width */
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  box-sizing: border-box;
+  object-fit: cover;
+   /* Include padding and border in the element's total width and height */
+   height:100vh;
+}
+
+.carousel-video {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.offers-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.offer-card {
+  width: 30%; /* Adjust width to make the cards smaller */
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  height: 300px; /* Set a fixed height for the offer cards */
+  box-sizing: border-box; /* Ensure padding and border are included in width and height */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.offer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Make the image cover the card */
+  border-radius: 10px; /* Optional: adds curved corners to the images */
+}
+
+.offer-card:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+.search-box {
+  position: relative;
+  width: 100%; /* Adjust width to fit the available space */
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0; /* Add background color */
+  border-radius: 25px; /* Make the search box curved */
+  padding: 5px 10px; /* Add some padding */
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  font-size: 1em;
+  border: none; /* Remove border */
+  outline: none; /* Remove outline */
+  background-color: transparent; /* Make the input background transparent */
+  border-radius: 25px; /* Make the input curved */
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px; /* Adjust right position to fit the padding */
+  font-size: 1.2em;
+  color: #333;
+}
+
+
+
+.carousel-wrapper {
+  width: 100%;
+  height: 750px; /* Adjust height as needed */
+  margin-top: 30px; /* Add space between carousels */
+ margin-bottom: 20px;
+}
+
+.carousel-wrapper .carousel .slide img {
+  max-height: 750px; /* Adjust height as needed */
+  object-fit: cover;
+  padding:10px;
+  padding-top:100px;
+ overflow:scroll;
+
+}
+
+.carousel-section {
+  display: flex;
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  overflow: hidden; /* Prevent scrolling */
+  object-fit: cover;
+}
+
+.carousel-item {
+  flex: 1 0 25%; /* Make items flexible and occupy a quarter of the section width */
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  object-fit: cover;
+}
+
+.carousel-video {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+.promote{
+  font-size: 40px; 
+ margin-right: 500px;
+ opacity: 1;
+    transform: translateY(0);
+    font-weight: 100;
+  color: black;
+
+}
+.promote1{
+  font-size: 40px; 
+  margin-right: 800px;
+  opacity: 1;
+     transform: translateY(0);
+     font-weight: 100;
+   color: rgb(5, 5, 138);
+}
+
+.brand{
+  margin-left: 20px;
+  font-weight: bolder;
+  color: rgb(231, 227, 227);
+}
+.app-name img{
+  width: 100px;
+}
+
+
+/* HomePage.css */
+
+/* Style for the Drawer background */
+.MuiDrawer-paper {
+  background-color: whitesmoke; /* Replace with your desired background color */
+  width: 250px; /* Width of the Drawer */
+  padding: 16px; /* Padding inside the Drawer */
+  border-right: 1px solid #ddd; /* Optional: Add a border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+}
+
+

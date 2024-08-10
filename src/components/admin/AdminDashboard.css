@@ -1,0 +1,11 @@
+.admin-dashboard {
+    display: flex;
+  }
+  
+  .main-content {
+    margin-left: 250px; /* Ensure this matches the width of your SideNav */
+    padding: 20px;
+    background-color: #f4f4f4;
+    width: calc(100% - 250px); /* Ensure this matches the width of your SideNav */
+    min-height: 100vh; /* Ensures the content area takes full height */
+  }

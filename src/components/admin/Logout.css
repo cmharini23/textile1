@@ -1,0 +1,31 @@
+.logout {
+    padding: 20px;
+  }
+  
+  .logout h1 {
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  
+  .logout button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
+  }
+  
+  .logout button:hover {
+    background-color: #c0392b;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }

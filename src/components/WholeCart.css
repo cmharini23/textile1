@@ -1,0 +1,48 @@
+.whole-cart-container {
+  padding: 20px;
+}
+
+.whole-cart-title {
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.empty-cart-message {
+  color: red;
+  font-size: 18px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 0.5s;
+}
+
+.cart-item-icon {
+  margin-left: 10px;
+}
+
+.cart-divider {
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+}
+
+.checkout-button {
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+

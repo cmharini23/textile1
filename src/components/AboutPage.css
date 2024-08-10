@@ -1,0 +1,47 @@
+.about-page {
+  position: relative;
+  padding: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.back-button svg {
+  margin-right: 5px;
+}
+
+.about-content {
+  margin-top: 60px; /* Adjust according to your layout */
+}
+
+.about-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.about-card img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.card-text {
+  max-width: 600px;
+}
+
+.about-text {
+  max-width: 800px;
+  margin-top: 20px;
+}
