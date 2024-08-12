@@ -122,6 +122,7 @@ const HomePage = () => {
           <Link to="/about">About</Link>
           <Link to="/sign">Login</Link>
           <Link to="/contact">Facing issues?</Link>
+          <Link to="/scheme">scheme?</Link>
           <Link to="/whole"><IoMdCart /></Link>
         </nav>
       </header>

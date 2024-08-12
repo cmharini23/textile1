@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Box,
   Typography,
@@ -20,36 +21,52 @@ const WholeCart = () => {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
+  // Fetch cart items from localStorage on component mount
   useEffect(() => {
     const fetchCartItems = async () => {
       const savedCart = JSON.parse(localStorage.getItem('wholeCart')) || [];
+      console.log('Fetched Cart Items:', savedCart); // Log fetched cart items
       setCartItems(savedCart);
     };
 
     fetchCartItems();
   }, []);
 
-  const handleCheckout = async () => {
-    try {
-      const orderData = { items: cartItems }; // Adjust this based on your backend schema
-      await fetch('http://localhost:8080/cart', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderData),
-      });
-      // Redirect to the WholeCart page after placing the order
-      navigate('/wholecart');
-    } catch (error) {
-      console.error('Error placing order:', error);
-    }
-  };
+  // Handle checkout: send cart items to backend
+// Handle checkout: send only the product IDs to the backend
+// Handle checkout: send only the product IDs to the backend
+// Handle checkout: send the product ID, price, and name to the backend
+const handleCheckout = async () => {
+  const orderData = cartItems.map(item => ({
+    prodid: item.id,
+    productName: item.name,
+    price: parseFloat(item.price.replace('Rs. ', '')), // Ensure price is a number
+  }));
 
+  try {
+    const response = await axios.post('http://localhost:8080/cart', orderData);
+    console.log('Response from Backend:', response.data);
+
+    localStorage.removeItem('wholeCart');
+    setCartItems([]);
+    navigate('/cart-payment');
+  } catch (error) {
+    console.error('Error during checkout:', error);
+  }
+};
+
+
+
+
+
+  // Handle deletion of an item from the cart
   const handleDelete = (itemId) => {
     const updatedCart = cartItems.filter(item => item.id !== itemId);
     setCartItems(updatedCart);
     localStorage.setItem('wholeCart', JSON.stringify(updatedCart));
   };
 
+  // Handle quantity change for an item
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity < 1) return; // Prevent setting quantity less than 1
 
@@ -63,11 +80,13 @@ const WholeCart = () => {
     localStorage.setItem('wholeCart', JSON.stringify(updatedCart));
   };
 
+  // Increment quantity
   const handleQuantityIncrement = (itemId) => {
     const item = cartItems.find(item => item.id === itemId);
     handleQuantityChange(itemId, (item.quantity || 1) + 1);
   };
 
+  // Decrement quantity
   const handleQuantityDecrement = (itemId) => {
     const item = cartItems.find(item => item.id === itemId);
     handleQuantityChange(itemId, (item.quantity || 1) - 1);
@@ -139,7 +158,7 @@ const WholeCart = () => {
         onClick={handleCheckout}
         disabled={cartItems.length === 0}
       >
-        Place Order
+       proceed to pay
       </Button>
     </Box>
   );

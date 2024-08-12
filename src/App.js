@@ -22,6 +22,8 @@ import MenCheckoutPage from './components/MenCheckoutPage';
 import KidCartPage from './components/KidCartPage';
 import KidCheckoutPage from './components/KidCheckoutPage';
 import WholeCart from './components/WholeCart';
+import CartPayment from './components/CartPayment';
+import SchemeManagement from './components/SchemeManagement';
 
 function App() {
   return (
@@ -48,6 +50,9 @@ function App() {
           <Route path="/kid-cart" element={<KidCartPage />} />
           <Route path="/kid-checkout" element={<KidCheckoutPage />} />
           <Route path="/whole" element={<WholeCart />} />
+          <Route path="/cart-payment" element={<CartPayment />} />
+          <Route path="/scheme" element={<SchemeManagement />} />
+        
         </Routes>
       </div>
     </Router>

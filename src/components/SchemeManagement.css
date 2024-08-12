@@ -1,0 +1,58 @@
+.scheme-management {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .scheme-management h1 {
+    font-family: 'Google Sans', sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .scheme-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scheme-item h2 {
+    font-family: 'Google Sans', sans-serif;
+    color: #444;
+  }
+  
+  .scheme-item p {
+    font-family: 'Google Sans', sans-serif;
+    color: #666;
+  }
+  
+  .scheme-management form {
+    margin-bottom: 20px;
+  }
+  
+  .scheme-management input, 
+  .scheme-management textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .scheme-management button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #6200ea;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .scheme-management button:hover {
+    background-color: #3700b3;
+  }

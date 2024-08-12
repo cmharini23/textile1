@@ -1,0 +1,27 @@
+.payment-container {
+    padding: 2rem;
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-divider {
+    margin: 1rem 0;
+  }
+  
+  .qr-code-box {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .qr-code-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .pay-now-button {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  

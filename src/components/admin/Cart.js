@@ -34,9 +34,9 @@ const Cart = () => {
           {cartItems.map((item) => (
             <React.Fragment key={item.id}>
               <ListItem className="cart-item">
-                <img src={item.image} alt={item.name} className="cart-item-image" />
+                {item.image && <img src={item.image} alt={item.productName} className="cart-item-image" />}
                 <ListItemText
-                  primary={`ID: ${item.id} - ${item.name}`}
+                  primary={`ID: ${item.id} - ${item.productName}`}
                   secondary={`Price: $${item.price} | Quantity: ${item.quantity || 1}`}
                 />
               </ListItem>
